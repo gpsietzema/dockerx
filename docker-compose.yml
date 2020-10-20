@@ -1,0 +1,33 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:latest
+    stdin_open: true
+    tty: true
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www
+      - ./.docker/vhost.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+      - mariadb
+
+  php:
+    build: '.docker/'
+    volumes:
+      - ./:/var/www
+
+  mariadb:
+    image: mariadb
+    ports:
+      - 3306:3306
+    command: [
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci'
+    ]
+    volumes:
+      - ../mysql-data/dockerx:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: dockerx

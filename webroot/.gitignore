@@ -1,0 +1,3 @@
+*
+!.gitignore
+!core/config/config.environment.inc.php
