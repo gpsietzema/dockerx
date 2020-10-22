@@ -1,0 +1,7 @@
+/var/www/private/core/components/site/*
+/var/www/private/core/cache/*
+/var/www/webroot/core/components/site/*
+/var/www/webroot/core/cache/*
+/var/www/webroot/assets/css/*
+/var/www/webroot/assets/js/*
+/var/www/webroot/info.php
